@@ -1,0 +1,74 @@
+Administradores de Servidores está a cargo de muchas tareas:instalar herramientas, mantener el sistema operativo actualizado, gestionar
+usuarios y permisos, monitorear los servicios y puertos abiertos del sistema, identificar amenazas y vulnerabilidades...
+"Todo lo que no está explicitamente permitido, debe estar explícitamente prohibido"
+¿Cómo funciona los permisos?
+Cuando ejecutamos el comando (ls), podemos ver la lista de archivos y subcarpetas de la ruta donde nos encontramos. Si utiizamos este
+comando con la opción (-lh),podemos ver un poco más de imformación: fecha de modificación, peso, usuario, propietario, grupo al que es 
+miembro este archivo y los permisos.
+
+Los permisos:
+drwxrw-r-- usuario grupo
+drwx------ usuario grupo
+-rwxr-xr-x usuario grupo
+-rwx------ usuario grupo
+
+La primera letra puede ser una d para indicar que hablamos de una subcarpeta o un guión ( -) cuando evaluamos archivos
+Las siguientes 9 letras debemos dividirlas en grupos de 3. El primero grupo son los permisos del usuario propietario del archivo. El
+segundo son los permisos del grupo al que pertenece el archivo. Y el tercero son los permisos para cualquier otro usuario del sistema
+operativo.
+
+Cada grupo de 3 puede comenzar con la letra ( r), refiriéndose a los permisos de lectura., continuar con ( w) para referirse a los permisos
+de escritura y terminar con una ( x) para indicar los permisos de eejecución.
+
+Si en vez de esas letras se ve un guión ( -), significa que ese usuario y grupo de usuario que no tiene permisos.
+
+(d|-) Carpeta o archivo.
+
+(r|-) El usuario propietario del archivo tienen permisos de lectura
+(w|-) El usuario propietario del archivo tienen permisos de escritura
+(x|-) El usuario propietario del archivo tienen permisos de ejecución
+
+(r|-) El grupo al que pertenece el archivo tiene permisos de lectura
+(w|-) El grupo al que pertenece el archivo tiene permisos de escritura
+(x|-) El grupo al que pertenece el archivo tiene permisos de ejecución
+
+(r|-) Todo el resto de usuarios del S.O tiene permisos de lectura
+(w|-) Todo el resto de usuarios del S.O tiene permisos de escritura
+(x|-) Todo el resto de usuarios del S.O tiene permisos de ejecución
+
+Actualización de permisos y propietarios
+Cuando nos referimos al urusiario propietario, demeos usar la letra ( u). Si cambiamos los permisos del grupo una ( g). Si queremos 
+cambiar los permisos de cualquier otro usuario usamos la ( o). Y si queremos cambiar los permisos de TODOS usamos la ( a).
+
+#Añadir permisos de escritura al grupo
+chmod g+w archivo.txt
+
+#Eliminar permisos de lectura a los usuarios no propietarios ni miembros del grupo al que pertenece el archivo
+chmod o-r
+
+#Añadir permisos de ejecución a todos (cualquier usuario):
+chmod a+x archivo.txt
+
+#Cambiar el usuario propietario:
+sudo chown nuevo-usuario archivo.txt
+
+#Cambiar el grupo de propietario:
+sudo chown :nuevo-grupo archivo.txt
+
+#Cambiar el usuario y grupo propietario:
+sudo chown nuevo-usuario:nuevo-grupo archivo.txt
+
+¿Todos los usuarios tienen los mismos permisos sobre todos los archivos? ¿Quiénes pueden o no trabajar con estos documentos? ¿Cómo se 
+dividen los permisos de un archivo o carpeta?
+	No, solo el usuario root
+¿Qué significa un 777?
+	Significa que todos los usuarios pueden poseer todos los permisos, eso debería preocuparnos porque puede traer errores
+¿Qué permisos debemos tener para poder editar un archivo que creo otro usuario de tu sistema operativo?
+	El permiso de escritura
+¿Con qué comando cambiamos los permisos que tienen los usuarios para trabajar con un archivo?
+	Con los permisos chown y chgrp
+No quieres que nadie pueda editar ni mucho menos ejecutar un script muy peligroso que estás creando. ¿Qué permisos debe tener este script
+para conseguir este resultado?
+	Sólo los de lecura
+¿Qué es sudo?
+	Es el usuario que posee todos los permisos, es peligroso debido a que puede dar permisos y editar archivos

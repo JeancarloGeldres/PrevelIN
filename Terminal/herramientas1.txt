@@ -1,0 +1,51 @@
+%Listar archivos
+ls
+%Archivos ocultos
+ls -a
+%Identificar el directorio
+pwd
+%Cambiar el directorio
+cd
+%Crear el directorio 
+mkdir
+%Copiar un archivo
+cp
+%Borrar archivo
+rm
+%Mover un archivo 
+mv
+%Borrar un directorio
+rmdir
+//Tipo de archivo: Binarios y de texto
+//Archivos binarios: programas ejecutables/Archivo de datos
+//Archivo de texto: contenido legible por humanos
+//Utilidades interactivas: Programas que procesan texto en tiempo real
+·vim texto.txt
+·nano text.txt
+//Bath = Programas que 	procesan texto y emiten el resultado
+/cat = Nos muestra el contenido completo del archivo
+/head = Para ver las primeras lineas del archivo
+/tail = Muestra las ùltimas lineas del archvo
+//Utilidades avanazadas
+/grep = Busqueda por expresiones regulares
+grep "palabra-clave" archivo_gigante.text
+#Si nos da igual si la palabra clave incluye mayùcula o mìni¡uscula, podemos utilizar el flag -i
+grep -i "PALABRA-CLAVE" archivo_gigante.txt
+#También, podemos verificar si la línea incluye esta palabra clave al final:
+grep "palabraclave$" archivo_gigante.txt
+#Para situaciones donde necesitamos modificar un poco la información que obtenemos de un archivo de texto
+¡Hola, Nombre_Usuario! Felicitaciones por completar tu desafío con puntos Puntos_Usuario punto
+/sed = Tratamiento de flujo de caracteres, modifica el el flujo pero no es el original, sino està esperndo su ejecución
+#Ahora si queremos cambiar los caracteres del archivo por otro nombre, podemos hacer lo siguiente
+	El comando sed. Sólo debemos indicarle que queremos realizar una sustitución (s/.), la palabra que vamos a cambiar (Nombre_Usuario),
+	la nueva palabra que vamos a inculir (Ana)y cerrar con el simbolo /.
+sed 's/Nombre_Usuario/Ana' archivo-saludo.txt
+#Ahora si quisieramos cambiar la puntuación que obtuvo el usuario:
+sed 's/Nombre_Usuario/Ana/; s/Puntos_Usuario/35/' archivo-saludo.txt
+
+Para más usos de comandos con sed:
+https://likegeeks.com/es/sed-de-linux/
+
+/awk = Tratamiento de exto delimitado
+%Para buscar archivos 
+find 

@@ -1,0 +1,74 @@
+&Paquetes Binarios 
+#apt
+apt install lynx 	(lector de páginas web)
+	#sudo apt install lynx 
+#zypper
+#rpm
+
+&Paquete de lenguajes
+#pip
+sudo pip install pandas
+#composer
+#rpm
+
+&Otros
+#conda
+#homebrew
+
+COMPRENSIÓN DE ARCHIVOS
+#Primero para visualizar los archivos
+ls dump4.sql -l
+#más detalles
+ls dump4.sql -lh
+#Para comprimirlo
+gzip dump4.sql
+#Para buscarlo
+ls dump4*
+#Para devolverlo a la normalidad
+ls -d dump4.sql.gz
+#Crear archivo
+cf
+
+COMBINACIÓN DE ARCHIVOS
+#Crear nuevo archivo donde van a gruparse otros
+tar cf backup.tar backup/*
+#Ver el contenido
+ls backup/ -l
+#Ver contenido del archivo
+tar tf backup.tar
+#Para expandirlo o sacarlo del agrupamiento
+tar xf backup.tar
+ls -l
+#Juntar archivos y comprimir resultados de la combinación
+tar czf backup.tgz backup/*
+
+BUSQUEDA BINARIA
+#locate == Permite hacer una busqueda de un archivo
+	#Funciona con una base de datos que tienen que ser explicitamente acutalizada periódicamente
+	sudo updatedb
+#whereis == Ubicar archivos binarios
+whereis echo
+#find == buscar dentro de un arbol de directorio
+find . -user mauro
+	#Buscar archivos modificados dentro de los útimmos 7 dias
+	find . -type f -mtime +7
+	#Ejecutar operación sobre archivos encontrados 
+	find . -type f -mtime +7 -exec cp {} ./backup/ \;
+
+INTERACCIÓN VÍA HTTP
+Comandos HTTP:
+#curl == pedidos crudos (servidor) 
+curl https://platzi.com
+	#Muestra toda comunicación vía http
+	curl -v https://platzi.com | more
+	#Ver solo los encabezados
+	curl -v https://platzi.com > /dev/null
+#wget ==descarga de servidor
+wget https://www.php.net/distributions/php-7.3.10.tar.bz2
+
+
+ACCESO SEGURO A OTRAS COMPUTADORAS
+%Conexión segura (usuario, host)
+ssh
+#Mandar un mensaje de prueba
+echo "Probando" | mail -s "Probando para Platzi" jeancarlo@hotmail.com
